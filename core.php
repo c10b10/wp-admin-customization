@@ -6,10 +6,11 @@ class AC_Core {
 		
 		self::$options = $options;
 		add_action('wp_dashboard_setup', array( __CLASS__, 'ac_dashboard_setup'), 99);
-		add_action('admin_head', array( __CLASS__, 'ac_admin_head_setup'));
-		add_action('login_head', array( __CLASS__, 'ac_login_head_setup'));
-		add_action('admin_init', array( __CLASS__, 'ac_remove_update_notices'));
-		add_action('admin_menu', array( __CLASS__, 'ac_remove_plugin_update_count'));
+		add_action('admin_head', array( __CLASS__, 'ac_admin_head_setup') );
+		add_action('login_head', array( __CLASS__, 'ac_login_head_setup') );
+		add_action('admin_init', array( __CLASS__, 'ac_remove_update_notices') );
+		add_action('admin_menu', array( __CLASS__, 'ac_remove_plugin_update_count') );
+		add_filter('admin_user_info_links', array( __CLASS__, 'ac_redirect_on_logout') );
 	}
 	
 	function ac_remove_update_notices()	{
@@ -30,6 +31,15 @@ class AC_Core {
 		}
 	}
 	
+	function ac_redirect_on_logout($links) {
+		if ( in_array( 'redirect_on_logout', self::$options->general_settings ) )
+		{
+			$links[15] = '| <a href="' . wp_logout_url( home_url() ) . '" title="Log Out">Log Out</a>';
+		}
+			return $links;
+	}
+	
+	
 	function ac_admin_head_setup() {
 		// Favicon
 		if ( !empty( self::$options->favicon ) )
@@ -43,21 +53,23 @@ class AC_Core {
 		}
         #site-title {
         	background:url(' . get_bloginfo('home') . '/wp-content/' . self::$options->admin_logo . ') left center no-repeat !important;
-          	padding-left:35px;
+          	padding-left:36px;
         }
        </style>';
 	}
 	
 	function ac_login_head_setup() {
-		if ( !empty( self::$options->login_logo ) )
+		if ( !empty( self::$options->login_logo ) ) {
+		  $logo_path = get_bloginfo( 'home' ) . '/wp-content/' . self::$options->login_logo;
+		  $logo_size = getimagesize( $logo_path );
 		  echo '<style type="text/css">
           h1 a
           {
-          	background:url(' . get_bloginfo('home') . '/wp-content/' . self::$options->login_logo . ') center top no-repeat !important;
-          	height: 133px;
-          	width: 309px;
+          	background:url(' . $logo_path . ') center top no-repeat !important;
+          	height: '. $logo_size[1] . 'px;
           }
         </style>';
+		}
 	}
 			
 	function ac_dashboard_setup() {

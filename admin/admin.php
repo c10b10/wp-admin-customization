@@ -27,6 +27,9 @@ class AC_Settings extends scbBoxesPage {
 			__( 'Hide plugin update count', $this->textdomain ) => array(
 				'value' => 'hide_plugin_count',
 			),
+			__( 'Redirect to home page on logout', $this->textdomain ) => array(
+				'value' => 'redirect_on_logout',
+			),
 		);
 		foreach ( $checkboxes as $name => $args )
 		{
@@ -51,12 +54,12 @@ class AC_Settings extends scbBoxesPage {
 		if ( !isset( $_POST['general_preferences_button'] ) )
 			return;
 			
-		$this->admin_msg( __( 'General settings saved.', $this->textdomain ) );
+		$this->admin_msg( __( 'General settings saved. You may need to refresh to see the changes.', $this->textdomain ) );
 		$this->options->general_settings = (array) @$_POST['general'];
 	}
 
 	function style_preferences_box() {
-		$output = $this->table(  array(
+		$output = $this->table( array(
 			array(
 				'title' => __( 'Favicon', $this->textdomain ),
 				'desc' => __( '(favicon path realative to wp-content)', $this->textdomain ),
@@ -74,8 +77,8 @@ class AC_Settings extends scbBoxesPage {
 			),
 
 			array(
-				'title' => __( 'Admin logo', $this->textdomain ),
-				'desc' => __( '(admin logo path relative to wp-content)<br />e.g.: "themes/mytheme/img/admin_logo.png"', $this->textdomain ),
+				'title' => __( 'Admin logo ', $this->textdomain ),
+				'desc' => __( '(admin logo (max <strong>32x32px</strong>) path relative to wp-content.)<br />e.g.: "themes/mytheme/img/admin_logo.png"', $this->textdomain ),
 				'type' => 'text',
 				'name' => 'admin_logo',
 				'value' => implode( ', ', (array) $this->options->admin_logo )

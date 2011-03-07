@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Admin Customization\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-05 18:51+0200\n"
-"PO-Revision-Date: 2011-03-05 19:08+0200\n"
+"POT-Creation-Date: 2011-03-07 13:59+0200\n"
+"PO-Revision-Date: 2011-03-07 14:06+0200\n"
 "Last-Translator: Alex Ciobica <alex.ciobica@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -13,111 +13,121 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-Language: Romanian\n"
 "X-Poedit-Country: Romania\n"
-"X-Poedit-SearchPath-0: /Volumes/MacData/Projects/Zebra Studio/site/_backup/dev/zebra.dev/wp-content/plugins/admin-customization\n"
+"X-Poedit-SearchPath-0: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization\n"
 
-#: /Volumes/MacData/Projects/Zebra
-#: Studio/site/_backup/dev/zebra.dev/wp-content/plugins/admin-customization/admin/admin.php:9
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/git/admin/admin.php:9
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/svn/trunk/admin/admin.php:9
 msgid "Admin Customization Settings"
 msgstr "Personalizare Administrare"
 
-#: /Volumes/MacData/Projects/Zebra
-#: Studio/site/_backup/dev/zebra.dev/wp-content/plugins/admin-customization/admin/admin.php:10
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/git/admin/admin.php:10
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/svn/trunk/admin/admin.php:10
 msgid "Admin Customization"
 msgstr "Personalizare Administrare"
 
-#: /Volumes/MacData/Projects/Zebra
-#: Studio/site/_backup/dev/zebra.dev/wp-content/plugins/admin-customization/admin/admin.php:15
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/git/admin/admin.php:15
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/svn/trunk/admin/admin.php:15
 msgid "Style preferences"
 msgstr "Preferințe de stil"
 
-#: /Volumes/MacData/Projects/Zebra
-#: Studio/site/_backup/dev/zebra.dev/wp-content/plugins/admin-customization/admin/admin.php:16
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/git/admin/admin.php:16
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/svn/trunk/admin/admin.php:16
 msgid "Dashboard widgets"
 msgstr "Widget-uri Panou Control"
 
-#: /Volumes/MacData/Projects/Zebra
-#: Studio/site/_backup/dev/zebra.dev/wp-content/plugins/admin-customization/admin/admin.php:17
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/git/admin/admin.php:17
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/svn/trunk/admin/admin.php:17
 msgid "General settings"
 msgstr "Setări generale"
 
-#: /Volumes/MacData/Projects/Zebra
-#: Studio/site/_backup/dev/zebra.dev/wp-content/plugins/admin-customization/admin/admin.php:24
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/git/admin/admin.php:24
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/svn/trunk/admin/admin.php:24
 msgid "Hide update notices"
 msgstr "Ascunde notificări de update"
 
-#: /Volumes/MacData/Projects/Zebra
-#: Studio/site/_backup/dev/zebra.dev/wp-content/plugins/admin-customization/admin/admin.php:27
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/git/admin/admin.php:27
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/svn/trunk/admin/admin.php:27
 msgid "Hide plugin update count"
 msgstr "Ascunde număr update pluginuri"
 
-#: /Volumes/MacData/Projects/Zebra
-#: Studio/site/_backup/dev/zebra.dev/wp-content/plugins/admin-customization/admin/admin.php:54
-msgid "General settings saved."
-msgstr "Setările generale au fost salvate."
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/git/admin/admin.php:30
+msgid "Redirect to home page on logout"
+msgstr "După logout, redirecționează către pagina de home"
 
-#: /Volumes/MacData/Projects/Zebra
-#: Studio/site/_backup/dev/zebra.dev/wp-content/plugins/admin-customization/admin/admin.php:63
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/git/admin/admin.php:57
+msgid "General settings saved. You may need to refresh to see the changes."
+msgstr "Preferințele generale au fost salvate. E nevoie de un refresh pentru a vedea schimbarile."
+
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/git/admin/admin.php:64
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/svn/trunk/admin/admin.php:61
 msgid "Favicon"
 msgstr ""
 
-#: /Volumes/MacData/Projects/Zebra
-#: Studio/site/_backup/dev/zebra.dev/wp-content/plugins/admin-customization/admin/admin.php:64
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/git/admin/admin.php:65
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/svn/trunk/admin/admin.php:62
 msgid "(favicon path realative to wp-content)"
 msgstr "(cale relativă la wp-content către favicon)"
 
-#: /Volumes/MacData/Projects/Zebra
-#: Studio/site/_backup/dev/zebra.dev/wp-content/plugins/admin-customization/admin/admin.php:71
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/git/admin/admin.php:72
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/svn/trunk/admin/admin.php:69
 msgid "Login logo"
 msgstr "Logo login"
 
-#: /Volumes/MacData/Projects/Zebra
-#: Studio/site/_backup/dev/zebra.dev/wp-content/plugins/admin-customization/admin/admin.php:72
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/git/admin/admin.php:73
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/svn/trunk/admin/admin.php:70
 msgid "(login logo path relative to wp-content)"
 msgstr "(cale relativă la wp-content către logo de pe pagina de login )"
 
-#: /Volumes/MacData/Projects/Zebra
-#: Studio/site/_backup/dev/zebra.dev/wp-content/plugins/admin-customization/admin/admin.php:79
-msgid "Admin logo"
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/git/admin/admin.php:80
+msgid "Admin logo "
 msgstr "Logo admin"
 
-#: /Volumes/MacData/Projects/Zebra
-#: Studio/site/_backup/dev/zebra.dev/wp-content/plugins/admin-customization/admin/admin.php:80
-msgid "(admin logo path relative to wp-content)<br />e.g.: \"themes/mytheme/img/admin_logo.png\""
-msgstr "(cale relativă la wp-content către logo admin)<br />ex.: \"themes/mytheme/img/admin_logo.png\""
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/git/admin/admin.php:81
+msgid "(admin logo (max <strong>32x32px</strong>) path relative to wp-content.)<br />e.g.: \"themes/mytheme/img/admin_logo.png\""
+msgstr "(cale relativă (max <strong>32x32px</strong>) la wp-content către logo admin)<br />ex.: \"themes/mytheme/img/admin_logo.png\""
 
-#: /Volumes/MacData/Projects/Zebra
-#: Studio/site/_backup/dev/zebra.dev/wp-content/plugins/admin-customization/admin/admin.php:94
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/git/admin/admin.php:95
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/svn/trunk/admin/admin.php:92
 msgid "Style preferences changes saved. You may need to refresh to see the changes."
 msgstr "Preferențele de stil au fost salvate. E nevoie de un refresh pentru a vedea schimbarile."
 
-#: /Volumes/MacData/Projects/Zebra
-#: Studio/site/_backup/dev/zebra.dev/wp-content/plugins/admin-customization/admin/admin.php:101
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/git/admin/admin.php:102
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/svn/trunk/admin/admin.php:99
 msgid "To update this list of widgets you must first visit the Dashboard."
 msgstr "Pentru actualizarea listei de widget-uri vizitează Panoul de Control"
 
-#: /Volumes/MacData/Projects/Zebra
-#: Studio/site/_backup/dev/zebra.dev/wp-content/plugins/admin-customization/admin/admin.php:102
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/git/admin/admin.php:103
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/svn/trunk/admin/admin.php:100
 msgid "Disable All Widgets"
 msgstr "Dezactivează toate Widget-urile"
 
-#: /Volumes/MacData/Projects/Zebra
-#: Studio/site/_backup/dev/zebra.dev/wp-content/plugins/admin-customization/admin/admin.php:112
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/git/admin/admin.php:113
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/svn/trunk/admin/admin.php:110
 msgid "Dashboard widgets settings saved."
 msgstr "Setări Widget-uri Panou Control au salvate."
 
-#: /Volumes/MacData/Projects/Zebra
-#: Studio/site/_backup/dev/zebra.dev/wp-content/plugins/admin-customization/scb/AdminPage.php:164
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/git/scb/AdminPage.php:164
 msgid "Settings <strong>saved</strong>."
 msgstr "Setări au fost <strong>salvate</strong>."
 
-#: /Volumes/MacData/Projects/Zebra
-#: Studio/site/_backup/dev/zebra.dev/wp-content/plugins/admin-customization/scb/AdminPage.php:176
-#: Studio/site/_backup/dev/zebra.dev/wp-content/plugins/admin-customization/scb/AdminPage.php:186
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/git/scb/AdminPage.php:176
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/git/scb/AdminPage.php:186
 msgid "Save Changes"
 msgstr "Salvează schimbările"
 
-#: /Volumes/MacData/Projects/Zebra
-#: Studio/site/_backup/dev/zebra.dev/wp-content/plugins/admin-customization/scb/AdminPage.php:368
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/git/scb/AdminPage.php:368
 msgid "Settings"
 msgstr "Setări"
+
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/svn/trunk/admin/admin.php:54
+msgid "General settings saved."
+msgstr "Setările generale au fost salvate."
+
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/svn/trunk/admin/admin.php:77
+msgid "Admin logo"
+msgstr "Logo admin"
+
+#: /Volumes/MacData/Projects/Wordpress/plugins/wp-admin-customization/svn/trunk/admin/admin.php:78
+msgid "(admin logo path relative to wp-content)<br />e.g.: \"themes/mytheme/img/admin_logo.png\""
+msgstr "(cale relativă la wp-content către logo admin)<br />ex.: \"themes/mytheme/img/admin_logo.png\""
 

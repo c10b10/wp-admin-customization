@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: Admin Customization
-Version: 1.0
-Description: Allows you to customize basic aspects of your Wordpress backend.
+Version: 1.1
+Description: Allows you to customize basic aspects of your Wordpress backend
 Author: Alex Ciobica
 Author URI: http://ciobi.ca/
 Plugin URI: http://wordpress.org/extend/plugins/admin-customization/
