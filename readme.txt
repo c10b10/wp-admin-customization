@@ -5,22 +5,18 @@ Requires at least: 3.0
 Tested up to: 3.1
 Stable tag: 1.0
 
-Customize the basic aspects of your Wordpress backend.
+Customize basic aspects of your Wordpress backend.
 
 == Description ==
 
 Admin Customization allows you to change basic settings in the Wordpress backend. 
-
 The plugin allows you to:
-* change the backend favicon;
-* change the backend logo;
-* change the login page logo;
-* disable dashboard widgets; 
+
+* change the backend favicon.
+* change the backend logo.
+* change the login page logo.
+* disable dashboard widgets.
 * hide update notices and plugin update count.
-
-**Credits**
-
-* [Cristi Burcă] (http://scribu.net), for scbFramework (http://scribu.net/wordpress/scb-framework), the plugin framework on which this plugin was built
 
 == Installation ==
 
@@ -41,3 +37,7 @@ To install the plugin you must.
 
 = 1.0 =
 * initial release
+
+== Credits ==
+
+* [Cristi Burcă] (http://scribu.net), for scbFramework (http://scribu.net/wordpress/scb-framework), the plugin framework on which this plugin was built
