@@ -5,12 +5,14 @@ class AC_Core {
 	static function init( $options ) {
 		
 		self::$options = $options;
-		add_action('wp_dashboard_setup', array( __CLASS__, 'ac_dashboard_setup'), 99);
-		add_action('admin_head', array( __CLASS__, 'ac_admin_head_setup') );
-		add_action('login_head', array( __CLASS__, 'ac_login_head_setup') );
-		add_action('admin_init', array( __CLASS__, 'ac_remove_update_notices') );
-		add_action('admin_menu', array( __CLASS__, 'ac_remove_plugin_update_count') );
-		add_filter('admin_user_info_links', array( __CLASS__, 'ac_redirect_on_logout') );
+		add_action( 'wp_dashboard_setup', array( __CLASS__, 'ac_dashboard_setup' ), 99);
+		add_action( 'admin_head', array( __CLASS__, 'ac_admin_head_setup' ) );
+		add_action( 'admin_init', array( __CLASS__, 'ac_remove_update_notices' ) );
+		add_action( 'admin_menu', array( __CLASS__, 'ac_remove_plugin_update_count' ) );
+		add_filter( 'admin_user_info_links', array( __CLASS__, 'ac_redirect_on_logout' ) );
+		add_action( 'login_head', array( __CLASS__, 'ac_login_head_setup' ) );
+		add_filter( 'login_headerurl', array( __CLASS__, 'ac_login_url' ) );
+		add_filter( 'login_headertitle', array( __CLASS__, 'ac_login_title' ) );
 	}
 	
 	function ac_remove_update_notices()	{
@@ -81,8 +83,13 @@ class AC_Core {
 				line-height: ' . $adjusted_head_height . 'px;
 			}
 			#favorite-actions {
-				margin-top: '. floor ( ( $adjusted_head_height - 22 ) / 2 ) .'px;
+				margin-top: ' . floor ( ( $adjusted_head_height - 22 ) / 2 ) . 'px;
+			}
+			#wphead #privacy-on-link {
+					line-height: ' . $logo_size[1] . 'px;
 			}';
+			
+			
 		}
 
 		if ( !empty( $site_title_styles ) )
@@ -116,6 +123,14 @@ class AC_Core {
           }
         </style>';
 		}
+	}
+
+	function ac_login_url() {
+		echo bloginfo( 'url' );
+	}
+	
+	function ac_login_title() {
+		echo get_option( 'blogname' );
 	}
 			
 	function ac_dashboard_setup() {
