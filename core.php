@@ -32,8 +32,7 @@ class AC_Core {
 	}
 	
 	function ac_redirect_on_logout($links) {
-		if ( in_array( 'redirect_on_logout', self::$options->general_settings ) )
-		{
+		if ( in_array( 'redirect_on_logout', self::$options->general_settings ) ) {
 			$links[15] = '| <a href="' . wp_logout_url( home_url() ) . '" title="Log Out">Log Out</a>';
 		}
 			return $links;
@@ -46,16 +45,36 @@ class AC_Core {
 			echo '<link rel="shortcut icon" href="' . get_bloginfo('home') . '/wp-content/' . self::$options->favicon . '" />';
 		
 		// Backend logo
-		if ( !empty( self::$options->admin_logo ) )
-		echo '<style type="text/css">
-		#header-logo {
-			display: none !important;
+		if ( !empty( self::$options->admin_logo ) )	{
+			$logo_path = get_bloginfo( 'home' ) . '/wp-content/' . self::$options->admin_logo;
+		 	$logo_size = getimagesize( $logo_path );
+			$logo_width = $logo_size[0] + 8;
+			$vertical_padding = $logo_size[1] - 26 > 0 ? round( ( $logo_size[1] - 26 ) / 2 ) : 0; 
+			$adjusted_head_height = ( $logo_size[1] + 16 < 46 ) ? 46 : $logo_size[1] + 16;
+			echo '<style type="text/css">
+			#header-logo {
+				display: none !important;
+			}
+	        #site-title {
+	        	background:url(' . get_bloginfo('home') . '/wp-content/' . self::$options->admin_logo . ') left center no-repeat !important;
+				float: left;
+	          	padding:' . $vertical_padding . 'px 0 ' . $vertical_padding . 'px ' . $logo_width . 'px;
+	        }
+			#wphead {
+				height: ' . $adjusted_head_height . 'px;
+			}
+			#wphead h1 {
+				margin: 8px 0 8px 10px;
+				padding: 0;
+			}
+			#user_info, #user_info p {
+				line-height: ' . $adjusted_head_height . 'px;
+			}
+			#favorite-actions {
+				margin-top: '. floor ( ( $adjusted_head_height - 22 ) / 2) .'px;
+			}
+	       </style>';
 		}
-        #site-title {
-        	background:url(' . get_bloginfo('home') . '/wp-content/' . self::$options->admin_logo . ') left center no-repeat !important;
-          	padding-left:36px;
-        }
-       </style>';
 	}
 	
 	function ac_login_head_setup() {
