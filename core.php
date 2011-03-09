@@ -17,12 +17,12 @@ class AC_Core {
 //		global $current_user;	
 //		get_currentuserinfo();
 //		if ($current_user->user_login != 'admin')
-		if ( in_array( 'hide_update_notices', self::$options->general_settings ) )
+		if ( in_array( 'hide_update_notices', (array) self::$options->general_settings ) )
 			remove_action('admin_notices', 'update_nag', 3);	
 	}
 	
 	function ac_remove_plugin_update_count() {
-		if ( in_array( 'hide_plugin_count', self::$options->general_settings ) )
+		if ( in_array( 'hide_plugin_count', (array) self::$options->general_settings ) )
 		{
 			global $menu, $submenu;
 		 
@@ -32,7 +32,7 @@ class AC_Core {
 	}
 	
 	function ac_redirect_on_logout($links) {
-		if ( in_array( 'redirect_on_logout', self::$options->general_settings ) ) {
+		if ( in_array( 'redirect_on_logout', (array) self::$options->general_settings ) ) {
 			$links[15] = '| <a href="' . wp_logout_url( home_url() ) . '" title="Log Out">Log Out</a>';
 		}
 			return $links;
@@ -44,36 +44,63 @@ class AC_Core {
 		if ( !empty( self::$options->favicon ) )
 			echo '<link rel="shortcut icon" href="' . get_bloginfo('home') . '/wp-content/' . self::$options->favicon . '" />';
 		
+		$site_title_styles = array();
+		
 		// Backend logo
+		if ( in_array( 'hide_logo_name', (array) self::$options->style_settings ) )
+		{
+			array_push( $site_title_styles, 'text-indent: -9999em;' );
+		}
+		
 		if ( !empty( self::$options->admin_logo ) )	{
 			$logo_path = get_bloginfo( 'home' ) . '/wp-content/' . self::$options->admin_logo;
 		 	$logo_size = getimagesize( $logo_path );
 			$logo_width = $logo_size[0] + 8;
 			$vertical_padding = $logo_size[1] - 26 > 0 ? round( ( $logo_size[1] - 26 ) / 2 ) : 0; 
 			$adjusted_head_height = ( $logo_size[1] + 16 < 46 ) ? 46 : $logo_size[1] + 16;
-			echo '<style type="text/css">
-			#header-logo {
+			
+			array_push( 
+				$site_title_styles, 
+				'background:url(' . get_bloginfo('home') . '/wp-content/' . self::$options->admin_logo . ') left center no-repeat !important;
+				float: left;
+          		padding:' . $vertical_padding . 'px 0 ' . $vertical_padding . 'px ' . $logo_width . 'px;'
+			);
+
+			$custom_logo_styles ='
+				#header-logo {
 				display: none !important;
 			}
-	        #site-title {
-	        	background:url(' . get_bloginfo('home') . '/wp-content/' . self::$options->admin_logo . ') left center no-repeat !important;
-				float: left;
-	          	padding:' . $vertical_padding . 'px 0 ' . $vertical_padding . 'px ' . $logo_width . 'px;
-	        }
 			#wphead {
 				height: ' . $adjusted_head_height . 'px;
 			}
 			#wphead h1 {
-				margin: 8px 0 8px 10px;
+				margin: 8px 0 8px 15px;
 				padding: 0;
 			}
 			#user_info, #user_info p {
 				line-height: ' . $adjusted_head_height . 'px;
 			}
 			#favorite-actions {
-				margin-top: '. floor ( ( $adjusted_head_height - 22 ) / 2) .'px;
+				margin-top: '. floor ( ( $adjusted_head_height - 22 ) / 2 ) .'px;
+			}';
+		}
+
+		if ( !empty( $site_title_styles ) )
+		{
+			if ( empty( $custom_logo_styles ) ) {
+				array_push( $site_title_styles, 'float: left;' );
 			}
-	       </style>';
+			
+			echo '<style type="text/css">
+				#site-title {';
+			foreach ( $site_title_styles as $rule ) {
+				echo $rule;
+			}
+			echo '}' . $custom_logo_styles; 
+			
+		
+			
+			echo '</style>';
 		}
 	}
 	

@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Admin Customization
-Version: 1.1
+Version: 1.2
 Description: Allows you to customize basic aspects of your Wordpress backend
 Author: Alex Ciobica
 Author URI: http://ciobi.ca/
-Plugin URI: http://wordpress.org/extend/plugins/admin-customization/
+Plugin URI: https://github.com/c10b10/wp-admin-customization/
 Text Domain: admin-customization
 Domain Path: /lang
 
@@ -48,6 +48,7 @@ function _ac_init() {
 		'widgets' => array(),
 		'disabled_widgets' => '',
 		'general_settings' => '',
+		'style_settings' => array(),
 	) );
 	
 	require_once $dir . '/core.php';

@@ -17,7 +17,12 @@ class AC_Settings extends scbBoxesPage {
 			array( 'general_settings', __( 'General settings', $this->textdomain ), 'normal' ),
 		);
 	}
-	
+	function page_header() {
+		echo "<div class='wrap'>\n";
+		screen_icon();
+		echo "<h2>" . $this->args['page_title'] . "</h2>\n";
+		echo '<p class="note">' . __( 'Note: If you don\'t see any changes immediately after you saved, just refresh or visit a different admin page.', $this->textdomain ) . "<p>";
+	}
 	function general_settings_box() {
 		$output = '';
 		$checkboxes = array(
@@ -34,16 +39,16 @@ class AC_Settings extends scbBoxesPage {
 		foreach ( $checkboxes as $name => $args )
 		{
 		$output .= html( 'tr',
-				html( 'th scope="row" class="check-column"',
+				html( 'td',
 					$this->input( array(
 						'type' => 'checkbox',
 						'name' => 'general[]',
 						'value' => $args['value'],
-						'desc' => false,
+						'desc' => $name,
 						'checked' => in_array( $args['value'], (array) $this->options->general_settings ),
 					) )
 				)
-				.html( 'td', $name ));
+				);
 				
 		}
 		
@@ -54,7 +59,7 @@ class AC_Settings extends scbBoxesPage {
 		if ( !isset( $_POST['general_preferences_button'] ) )
 			return;
 			
-		$this->admin_msg( __( 'General settings saved. You may need to refresh to see the changes.', $this->textdomain ) );
+		$this->admin_msg( __( 'General settings saved. <strong>You need to refresh to see the changes.</strong>', $this->textdomain ) );
 		$this->options->general_settings = (array) @$_POST['general'];
 	}
 
@@ -78,12 +83,21 @@ class AC_Settings extends scbBoxesPage {
 
 			array(
 				'title' => __( 'Admin logo ', $this->textdomain ),
-				'desc' => __( '(admin logo (max <strong>32x32px</strong>) path relative to wp-content.)<br />e.g.: "themes/mytheme/img/admin_logo.png"', $this->textdomain ),
+				'desc' => __( '(admin logo path relative to wp-content.)<br />e.g.: "themes/mytheme/img/admin_logo.png"', $this->textdomain ),
 				'type' => 'text',
 				'name' => 'admin_logo',
 				'value' => implode( ', ', (array) $this->options->admin_logo )
+			),
+			array(
+				'title' => false,
+				'type' => 'checkbox',
+				'name' => 'style_settings[]',
+				'value' => 'hide_logo_name',
+				'desc' => __( 'Hide admin logo name', $this->textdomain ),
+				'checked' => in_array( 'hide_logo_name', (array) $this->options->style_settings )
 			)
-		) );
+		) ); 
+				
 		// same as $this->form_wrap( $output, '', 'style_preferences_button');
 		echo $this->form_wrap( $output, array('action' => 'style_preferences_button'));
 	}
@@ -92,14 +106,14 @@ class AC_Settings extends scbBoxesPage {
 		if ( !isset( $_POST['style_preferences_button'] ) )
 			return;
 		
-		$this->admin_msg( __( 'Style preferences changes saved. You may need to refresh to see the changes.', $this->textdomain ) );
+		$this->admin_msg( __( 'Style preferences changes saved. <strong>You need to refresh to see the changes.</strong>', $this->textdomain ) );
 		
-		foreach ( array( 'favicon', 'login_logo', 'admin_logo' ) as $key )
+		foreach ( array( 'favicon', 'login_logo', 'admin_logo', 'style_settings' ) as $key )
 			$this->options->$key = @$_POST[$key];
 	}
 
 	function dashboard_settings_box() {
-		$output = '<p class="updated">' . __( 'To update this list of widgets you must first visit the Dashboard.', $this->textdomain ) . '<p>'.
+		$output = '<p class="updated">' . __( 'To update this list of widgets you must first visit the Dashboard.', $this->textdomain ) . '<p>' .
 			$this->_widget_table(__( 'Disable All Widgets', $this->textdomain ), $this->options->widgets);
 
 		// same as $this->form_wrap( $output, '', 'dashboard_settings_button');
@@ -142,7 +156,7 @@ class AC_Settings extends scbBoxesPage {
 	width: 20%;
 	max-width: 200px;
 	padding: 10px 0 !important;
-	font-size: 13px;
+	font-size: 12px;
 }
 .inside .widefat .check-column {
 	padding-bottom: 7px !important;
@@ -158,6 +172,7 @@ class AC_Settings extends scbBoxesPage {
 .inside table.checklist {
 	clear: none;
 	margin-right: 1em !important;
+	line-height: 1.6em;
 }
 
 .inside .checklist th input {
@@ -196,10 +211,18 @@ p.updated {
 	padding: 0.6em;
 	background-color: #FFFFE0;
     border-color: #E6DB55;
-    border-radius: 3px 3px 3px 3px;
     border-style: solid;
     border-width: 1px 0 1px 0;
-    
+}
+#style_preferences table tbody > :last-child * {
+	padding-top: 3px !important;
+}
+.note {
+	font-size: 1.2em;
+	font-style: italic;
+	color: #777;
+	font-family: Georgia,"Times New Roman","Bitstream Charter",Times,serif;
+	margin-bottom: 0;
 }
 </style>
 <?php 
@@ -207,8 +230,8 @@ p.updated {
 	private function _checklist_wrap( $title, $tbody ) {
 		$thead =
 		html( 'tr',
-			 html( 'th scope="col" class="check-column"', '<input type="checkbox" />' )
-			.html( 'th scope="col"', $title )
+			 html( 'th scope="col" class="check-column"', '<input id="' . sanitize_title_with_dashes( $title ) . '" type="checkbox" />' )
+			.html( 'th scope="col"', '<label for=' . sanitize_title_with_dashes( $title ) . '>' . $title . '</label>' )
 		);
 	 
 		$table =
@@ -233,10 +256,11 @@ p.updated {
 						'name' => 'widgets[]',
 						'value' => $widget['id'],
 						'desc' => false,
+						'extra' => array( 'id' => $widget['id'] ),
 						'checked' => in_array( $widget['id'], (array) $this->options->disabled_widgets ),
 					) )
 				)
-				.html( 'td', $widget['title'] )
+				.html( 'td', '<label for=' . $widget['id'] . '>' . $widget['title'] . '</label>')
 			);
 		}
 		return $this->_checklist_wrap( $title, $tbody );

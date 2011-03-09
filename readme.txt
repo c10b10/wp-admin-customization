@@ -4,7 +4,7 @@ Tags: admin, backend, favicon, settings, customization, logo, update, alerts
 Donate link: http://www.ciobi.ca/
 Requires at least: 3.0
 Tested up to: 3.1
-Stable tag: 1.1
+Stable tag: 1.2
 
 Customize basic aspects of your Wordpress backend.
 
@@ -15,6 +15,7 @@ The plugin allows you to:
 
 * change the backend favicon.
 * change the backend logo.
+* hide the admin logo name.
 * change the login page logo.
 * disable dashboard widgets.
 * hide update notices and plugin update count.
@@ -36,6 +37,11 @@ To install the plugin you must.
 * Romanian
 
 == Changelog ==
+
+= 1.2 =
+* added ability to hide the admin logo name
+* backend logo can now have any height
+* added labels to checkboxes
 
 = 1.1 =
 * added ability to redirect to homepage from logout
