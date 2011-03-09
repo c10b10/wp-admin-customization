@@ -65,7 +65,7 @@ class AC_Core {
 			// Calculate the new padding needed to accomodate the height (26 is the default logo text height)
 			$vertical_padding = $logo_size[1] - 26 > 0 ? round( ( $logo_size[1] - 26 ) / 2 ) : 0; 
 			// Calculate the header height
-			$adjusted_head_height = ( $logo_size[1] + $margins[0] + $margins[2] < 46 ) ? 46 : $logo_size[1] + $margins[0] + $margins[2];
+			$adjusted_head_height = max( $logo_size[1] + $margins[0] + $margins[2],  46 );
 			array_push( 
 				$site_title_styles, 
 				'background:url(' . get_bloginfo('home') . '/wp-content/' . self::$options->admin_logo . ') left center no-repeat !important;
@@ -91,7 +91,7 @@ class AC_Core {
 				margin-top: ' . floor ( ( $adjusted_head_height - 22 ) / 2 ) . 'px;
 			}
 			#wphead #privacy-on-link {
-					line-height: ' . ( $logo_size[1] + 7 ) . 'px;
+					line-height: ' . ( max( $logo_size[1], 26 ) + 5 ) . 'px;
 			}';
 			
 			
