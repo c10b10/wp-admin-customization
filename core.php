@@ -55,12 +55,17 @@ class AC_Core {
 		}
 		
 		if ( !empty( self::$options->admin_logo ) )	{
+			// Get logo information
 			$logo_path = get_bloginfo( 'home' ) . '/wp-content/' . self::$options->admin_logo;
 		 	$logo_size = getimagesize( $logo_path );
-			$logo_width = $logo_size[0] + 8;
+			// If the logo fits in the default bar, don't modify its margins
+			$margins = ( $logo_size[1] + $margins[0] + $margins[2] < 46 ) ? array( 10, 8, 5, 15 ) : array( 8, 0, 8, 15 );
+			// Calculate the new logo width
+			$logo_width = $logo_size[0] + ( ( $margins[0] + $margins[2] ) / 2 );
+			// Calculate the new padding needed to accomodate the height (26 is the default logo text height)
 			$vertical_padding = $logo_size[1] - 26 > 0 ? round( ( $logo_size[1] - 26 ) / 2 ) : 0; 
-			$adjusted_head_height = ( $logo_size[1] + 16 < 46 ) ? 46 : $logo_size[1] + 16;
-			
+			// Calculate the header height
+			$adjusted_head_height = ( $logo_size[1] + $margins[0] + $margins[2] < 46 ) ? 46 : $logo_size[1] + $margins[0] + $margins[2];
 			array_push( 
 				$site_title_styles, 
 				'background:url(' . get_bloginfo('home') . '/wp-content/' . self::$options->admin_logo . ') left center no-repeat !important;
@@ -76,7 +81,7 @@ class AC_Core {
 				height: ' . $adjusted_head_height . 'px;
 			}
 			#wphead h1 {
-				margin: 8px 0 8px 15px;
+				margin: ' . $margins[0] . 'px ' . $margins[1] . 'px ' . $margins[2] . 'px ' . $margins[3] . 'px;
 				padding: 0;
 			}
 			#user_info, #user_info p {
@@ -86,7 +91,7 @@ class AC_Core {
 				margin-top: ' . floor ( ( $adjusted_head_height - 22 ) / 2 ) . 'px;
 			}
 			#wphead #privacy-on-link {
-					line-height: ' . $logo_size[1] . 'px;
+					line-height: ' . ( $logo_size[1] + 7 ) . 'px;
 			}';
 			
 			
