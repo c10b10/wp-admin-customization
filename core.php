@@ -156,7 +156,7 @@ class AC_Core {
 										   'priority' => $priority
 										   );
 						// unset the required widgets
-						if ( in_array( $widget, $disabled_widgets ) ) 
+						if ( in_array( $widget, (array) $disabled_widgets ) ) 
 							unset($wp_meta_boxes['dashboard'][$context][$priority][$widget]);
 					}
 				}
