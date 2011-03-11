@@ -59,7 +59,8 @@ class AC_Core {
 			$logo_path = get_bloginfo( 'home' ) . '/wp-content/' . self::$options->admin_logo;
 		 	$logo_size = getimagesize( $logo_path );
 			// If the logo fits in the default bar, don't modify its margins
-			$margins = ( $logo_size[1] + $margins[0] + $margins[2] < 46 ) ? array( 10, 8, 5, 15 ) : array( 8, 0, 8, 15 );
+			$margins = array( 8, 0, 8, 15 );
+			$margins = ( $logo_size[1] + $margins[0] + $margins[2] < 46 ) ? array( 10, 8, 5, 15 ) : $margins;
 			// Calculate the new logo width
 			$logo_width = $logo_size[0] + ( ( $margins[0] + $margins[2] ) / 2 );
 			// Calculate the new padding needed to accomodate the height (26 is the default logo text height)
@@ -156,7 +157,7 @@ class AC_Core {
 										   'priority' => $priority
 										   );
 						// unset the required widgets
-						if ( in_array( $widget, (array) $disabled_widgets ) ) 
+						if ( in_array( $widget, $disabled_widgets ) ) 
 							unset($wp_meta_boxes['dashboard'][$context][$priority][$widget]);
 					}
 				}
