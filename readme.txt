@@ -21,6 +21,9 @@ The plugin allows you to:
 * hide update notices and plugin update count.
 * turn on redirection to homepage on administration panels logout.
 
+= Author = 
+You should should follow me (@ciobi) on <a href="http://twitter.com/ciobi/>"twitter</a>.
+
 == Installation ==
 
 To install the plugin you must.
