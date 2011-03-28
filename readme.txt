@@ -4,7 +4,7 @@ Tags: admin, backend, favicon, settings, customization, logo, update, alerts
 Donate link: http://www.ciobi.ca/
 Requires at least: 3.0
 Tested up to: 3.1
-Stable tag: 1.2
+Stable tag: 1.2.1
 
 Customize basic aspects of your Wordpress backend.
 
@@ -22,7 +22,7 @@ The plugin allows you to:
 * turn on redirection to homepage on administration panels logout.
 
 = Author = 
-You should should follow me (@ciobi) on <a href="http://twitter.com/ciobi/>"twitter</a>.
+You should should follow me (@ciobi) on <a href="http://twitter.com/ciobi/">twitter</a>.
 
 == Installation ==
 
@@ -40,6 +40,12 @@ To install the plugin you must.
 * Romanian
 
 == Changelog ==
+
+= 1.2.1 =
+* fixed in_array warnings
+* using site_url to avoid problems when site in a subdirectory (thank you noyz319)
+* minor logo positioning fixes
+* replaced login logo link to point to home page
 
 = 1.2 =
 * added ability to hide the admin logo name

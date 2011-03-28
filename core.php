@@ -44,34 +44,35 @@ class AC_Core {
 	function ac_admin_head_setup() {
 		// Favicon
 		if ( !empty( self::$options->favicon ) )
-			echo '<link rel="shortcut icon" href="' . get_bloginfo('home') . '/wp-content/' . self::$options->favicon . '" />';
+			echo '<link rel="shortcut icon" href="' . site_url() . '/wp-content/' . self::$options->favicon . '" />';
 		
 		$site_title_styles = array();
 		
 		// Backend logo
 		if ( in_array( 'hide_logo_name', (array) self::$options->style_settings ) )
 		{
-			array_push( $site_title_styles, 'text-indent: -9999em;' );
+			array_push( $site_title_styles, 'text-indent: -9999em; width: 0;' );
 		}
 		
 		if ( !empty( self::$options->admin_logo ) )	{
 			// Get logo information
-			$logo_path = get_bloginfo( 'home' ) . '/wp-content/' . self::$options->admin_logo;
+			$logo_path = site_url() . '/wp-content/' . self::$options->admin_logo;
 		 	$logo_size = getimagesize( $logo_path );
 			// If the logo fits in the default bar, don't modify its margins
 			$margins = array( 8, 0, 8, 15 );
 			$margins = ( $logo_size[1] + $margins[0] + $margins[2] < 46 ) ? array( 10, 8, 5, 15 ) : $margins;
+			
 			// Calculate the new logo width
 			$logo_width = $logo_size[0] + ( ( $margins[0] + $margins[2] ) / 2 );
 			// Calculate the new padding needed to accomodate the height (26 is the default logo text height)
 			$vertical_padding = $logo_size[1] - 26 > 0 ? round( ( $logo_size[1] - 26 ) / 2 ) : 0; 
 			// Calculate the header height
-			$adjusted_head_height = max( $logo_size[1] + $margins[0] + $margins[2],  46 );
+			$adjusted_head_height = max( $vertical_padding * 2 + 26 + $margins[0] + $margins[2], 46 );
 			array_push( 
 				$site_title_styles, 
-				'background:url(' . get_bloginfo('home') . '/wp-content/' . self::$options->admin_logo . ') left center no-repeat !important;
+				'background:url(' . site_url() . '/wp-content/' . self::$options->admin_logo . ") left center no-repeat !important;
 				float: left;
-          		padding:' . $vertical_padding . 'px 0 ' . $vertical_padding . 'px ' . $logo_width . 'px;'
+          		padding:" . $vertical_padding . 'px 0 ' . $vertical_padding . 'px ' . $logo_width . 'px;'
 			);
 
 			$custom_logo_styles ='
@@ -92,7 +93,9 @@ class AC_Core {
 				margin-top: ' . floor ( ( $adjusted_head_height - 22 ) / 2 ) . 'px;
 			}
 			#wphead #privacy-on-link {
-					line-height: ' . ( max( $logo_size[1], 26 ) + 5 ) . 'px;
+					line-height: ' . ( max( $logo_size[1], 26 ) ) . 'px;
+					position: relative;
+					top: 2px;
 			}';
 			
 			
@@ -119,7 +122,7 @@ class AC_Core {
 	
 	function ac_login_head_setup() {
 		if ( !empty( self::$options->login_logo ) ) {
-		  $logo_path = get_bloginfo( 'home' ) . '/wp-content/' . self::$options->login_logo;
+		  $logo_path = site_url() . '/wp-content/' . self::$options->login_logo;
 		  $logo_size = getimagesize( $logo_path );
 		  echo '<style type="text/css">
           h1 a
@@ -132,7 +135,7 @@ class AC_Core {
 	}
 
 	function ac_login_url() {
-		echo bloginfo( 'url' );
+		echo home_url();
 	}
 	
 	function ac_login_title() {
@@ -157,7 +160,7 @@ class AC_Core {
 										   'priority' => $priority
 										   );
 						// unset the required widgets
-						if ( in_array( $widget, $disabled_widgets ) ) 
+						if ( in_array( $widget, (array) $disabled_widgets ) ) 
 							unset($wp_meta_boxes['dashboard'][$context][$priority][$widget]);
 					}
 				}
