@@ -45,6 +45,7 @@ function _ac_init() {
 		'favicon' => false,
 		'login_logo' => false,
 		'admin_logo' => false,
+		'admin_logo_font_size' => 16,
 		'widgets' => array(),
 		'disabled_widgets' => '',
 		'general_settings' => '',
