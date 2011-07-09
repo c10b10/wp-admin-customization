@@ -1,1 +1,4 @@
 .DS_Store
+*.sw*
+scb/.git*
+
