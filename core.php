@@ -13,6 +13,8 @@ class AC_Core {
 		add_action( 'login_head', array( __CLASS__, 'ac_login_head_setup' ) );
 		add_filter( 'login_headerurl', array( __CLASS__, 'ac_login_url' ) );
 		add_filter( 'login_headertitle', array( __CLASS__, 'ac_login_title' ) );
+		add_filter( 'admin_footer_text', array( __CLASS__, 'ac_footer_left' ) );
+		add_filter( 'update_footer', array( __CLASS__, 'ac_footer_right' ), 11 );
 	}
 	
 	function ac_remove_update_notices()	{
@@ -171,6 +173,22 @@ class AC_Core {
 	function ac_login_title() {
 		echo get_option( 'blogname' );
 	}
+
+    function ac_footer_left( $footer_text ) {
+        if ( !empty( self::$options->admin_footer_left ) ) {
+            return htmlspecialchars_decode ( self::$options->admin_footer_left );
+        } else {
+            return $footer_text;
+        }        
+    }
+
+    function ac_footer_right( $upgrade ) {
+        if ( !empty( self::$options->admin_footer_right ) ) {
+            return htmlspecialchars_decode ( self::$options->admin_footer_right );
+        } else {
+            return $upgrade;
+        }        
+    }
 			
 	function ac_dashboard_setup() {
 	 	global $wp_meta_boxes;

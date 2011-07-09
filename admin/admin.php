@@ -122,7 +122,6 @@ class AC_Settings extends scbBoxesPage {
                 'extra' => empty( $login_logo_exists ) ? array( 'class' => 'regular-text' ) : array( 'class' => 'ac_found regular-text' ),        
 				'value' => implode( ', ', (array) $this->options->login_logo )
 			),
-
 			array(
 				'title' => __( 'Admin logo ', $this->textdomain ),
 				'desc' => __( '(admin logo path relative to wp-content.)<br />e.g.: "themes/mytheme/img/admin_logo.png"', $this->textdomain ),
@@ -130,6 +129,14 @@ class AC_Settings extends scbBoxesPage {
 				'name' => 'admin_logo',
                 'extra' => empty( $admin_logo_exists ) ? array( 'class' => 'regular-text' ) : array( 'class' => 'ac_found regular-text' ),        
 				'value' => implode( ', ', (array) $this->options->admin_logo )
+			),
+			array(
+				'title' => false,
+				'type' => 'checkbox',
+				'name' => 'style_settings[]',
+				'value' => 'hide_logo',
+				'desc' => __( 'Hide admin logo', $this->textdomain ),
+				'checked' => in_array( 'hide_logo', (array) $this->options->style_settings )
 			),
 			array(
 				'title' => __( 'Logo text font size', $this->textdomain ),
@@ -147,13 +154,19 @@ class AC_Settings extends scbBoxesPage {
 				'checked' => in_array( 'hide_logo_name', (array) $this->options->style_settings )
 			),
 			array(
-				'title' => false,
-				'type' => 'checkbox',
-				'name' => 'style_settings[]',
-				'value' => 'hide_logo',
-				'desc' => __( 'Hide admin logo', $this->textdomain ),
-				'checked' => in_array( 'hide_logo', (array) $this->options->style_settings )
-			)
+				'title' => __( 'Admin footer text left', $this->textdomain ),
+				'desc' => __( 'Replacement for the left footer text. Accepts HTML.', $this->textdomain ),
+				'type' => 'text',
+				'name' => 'admin_footer_left',
+				'value' => implode( ', ', (array)$this->options->admin_footer_left )
+			),
+			array(
+				'title' => __( 'Admin footer text right', $this->textdomain ),
+				'desc' => __( 'Replacement for the Wordpress version footer text on the right. Accepts HTML.', $this->textdomain ),
+				'type' => 'text',
+				'name' => 'admin_footer_right',
+				'value' => implode( ', ', (array) $this->options->admin_footer_right ) 
+			),
 		) ); 
 				
 		// same as $this->form_wrap( $output, '', 'style_preferences_button');
@@ -165,10 +178,14 @@ class AC_Settings extends scbBoxesPage {
 			return;
 		
 		$this->admin_msg( __( 'Style preferences changes saved.', $this->textdomain ) );
-		
-		foreach ( array( 'favicon', 'login_logo', 'admin_logo', 'style_settings' ) as $key )
-			$this->options->$key = @$_POST[$key];
 
+        foreach ( array( 'favicon', 'login_logo', 'admin_logo', 'style_settings' ) as $key ) {
+			$this->options->$key = @$_POST[$key];
+        }
+
+        foreach ( array( 'admin_footer_left', 'admin_footer_right' ) as $key ) {
+			$this->options->$key = htmlspecialchars ( stripslashes( @$_POST[$key] ) );
+        }
         // Strip non-numeric characters from the font size
         $font_size = ereg_replace( "[^0-9]", "", @$_POST['admin_logo_font_size'] );
         $this->options->admin_logo_font_size = empty( $font_size ) ? 16 : $font_size;
