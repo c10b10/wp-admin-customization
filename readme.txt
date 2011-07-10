@@ -1,6 +1,6 @@
 === Plugin Name ===
 Contributors: ciobi
-Tags: admin, backend, favicon, settings, customization, logo, update, alerts
+Tags: admin, backend, favicon, settings, customization, logo, update, footer, alerts
 Donate link: http://www.ciobi.ca/
 Requires at least: 3.2
 Tested up to: 3.2
@@ -59,7 +59,6 @@ To install the plugin you must:
 * fixes a Wordpress dropdown UI bug
 * ui enhancements
 
-
 = 1.2.1 =
 * fixed in_array warnings
 * using site_url to avoid problems when site in a subdirectory (thank you noyz319)
@@ -77,6 +76,11 @@ To install the plugin you must:
 
 = 1.0 =
 * initial release
+
+== Upgrade Notice ==
+
+= 2.0 =
+This version adds more features, and support for Wordpress 3.2. If you don't have Wordpress 3.2 installed, do not upgrade. It will not work with older versions.
 
 == Credits ==
 
