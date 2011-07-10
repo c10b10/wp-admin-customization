@@ -64,8 +64,8 @@ class AC_Core {
 		
         // Fix wp 3.2 user info dropdown width bug
         $styles[] = '
-            #user_info_links_wrap {
-                min-width: 98px !important;
+            #user_info > div {
+                min-width: 95px !important;
             }
             ';
 		// Backend logo name

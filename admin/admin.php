@@ -214,13 +214,14 @@ class AC_Settings extends scbBoxesPage {
 ?>
 <style type="text/css">
 img.checked {
-    border-radius: 20px;
-    padding: 4px !important;
-    background: #EEE;
-    position: absolute;
-    right: -5px;
-    top: 11px;
+    background: none repeat scroll 0 0 #EEEEEE;
     border: 1px solid #F9F9F9;
+    border-radius: 20px 20px 20px 20px;
+    float: right;
+    margin-top: 1px;
+    padding: 4px !important;
+    position: relative;
+    right: -5px;
 }
 .settings_page_admin-customization .widefat {
     background-color: transparent;
@@ -279,7 +280,7 @@ margin: 10px 0;
 	padding: 0 !important;
 }
 .inside table.checklist {
-	clear: none;
+	clear: both;
 	margin-right: 1em !important;
 	line-height: 1.6em;
 }
