@@ -23,7 +23,7 @@ The plugin allows you to:
 * hide update notices and plugin update count.
 * turn on redirection to homepage on administration panels logout.
  
-The plugin also corrects other Wordpress UX mistakes like not being able to click on the backend logo or on the login logos, and the fact that the user info dropdown list is 2px larger than the dropdown header.
+The plugin also corrects other Wordpress UX mistakes like not being able to click on the backend or on the login logos, and the fact that the user info dropdown list is mistakenly 2px larger than the dropdown header.
 
 = Author = 
 You should should follow me (@ciobi) on <a href="http://twitter.com/ciobi/">twitter</a>.
