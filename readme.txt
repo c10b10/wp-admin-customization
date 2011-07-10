@@ -52,7 +52,7 @@ To install the plugin you must:
 
 = 2.0 =
 * added support for Wordpress 3.2
-* added the ability to hide the admin logo text
+* added the ability to hide the admin logo image
 * added the ability to change the logo text font size
 * added the ability to replace the right and left footer text
 * support for backend logo clicking
@@ -66,7 +66,7 @@ To install the plugin you must:
 * replaced login logo link to point to home page
 
 = 1.2 =
-* added ability to hide the admin logo name
+* added ability to hide the admin logo text
 * backend logo can now have any height
 * added labels to checkboxes
 
