@@ -49,7 +49,7 @@ class AC_Settings extends scbBoxesPage {
         echo "<div class='wrap'>\n";
         screen_icon();
         echo "<h2>" . $this->args['page_title'] . "</h2>\n";
-        /* echo '<p class="note">' . __( 'Note: If you don\\'t see any changes immediately after you saved, just <a href="' . admin_url('options-general.php?page=admin-customization') . '">refresh</a> or visit a different admin page.', $this->textdomain ) . "<p>"; */
+        echo '<p class="note">' . sprintf( __( 'Note: If you don\'t see any changes immediately after you saved, just <a href="%1$s">refresh</a> or visit a different admin page.', $this->textdomain ), admin_url('options-general.php?page=admin-customization') ) . "<p>"; 
 
         $this->verify_file_existence( $this->options->favicon, true );  
         $this->verify_file_existence( $this->options->login_logo, true );  
@@ -91,8 +91,9 @@ class AC_Settings extends scbBoxesPage {
 	function general_settings_handler() {
 		if ( !isset( $_POST['general_preferences_button'] ) )
 			return;
-			
-		$this->admin_msg( __( 'General settings saved.', $this->textdomain ) );
+
+		$this->admin_msg( sprintf( __( 'General settings saved. Please <a href="%1$s">refresh</a> to see the changes.', $this->textdomain ), admin_url('options-general.php?page=admin-customization') ) );	
+		// $this->admin_msg( __( 'General settings saved.', $this->textdomain ) );
 		$this->options->general_settings = (array) @$_POST['general'];
 
         // Refresh page
@@ -177,7 +178,8 @@ class AC_Settings extends scbBoxesPage {
 		if ( !isset( $_POST['style_preferences_button'] ) )
 			return;
 		
-		$this->admin_msg( __( 'Style preferences changes saved.', $this->textdomain ) );
+		// $this->admin_msg( __( 'Style preferences changes saved.', $this->textdomain ) );
+        $this->admin_msg( sprintf( __( 'Style preferences changes saved. Please <a href="%1$s">refresh</a> to see the changes.', $this->textdomain ), admin_url('options-general.php?page=admin-customization') ) );
 
         foreach ( array( 'favicon', 'login_logo', 'admin_logo', 'style_settings' ) as $key ) {
 			$this->options->$key = @$_POST[$key];
@@ -191,7 +193,7 @@ class AC_Settings extends scbBoxesPage {
         $this->options->admin_logo_font_size = empty( $font_size ) ? 16 : $font_size;
 
         // Refresh page
-        header( 'Location: ' . admin_url('options-general.php?page=admin-customization') );
+        // header( 'Location: ' . admin_url('options-general.php?page=admin-customization') );
 	}
 
 	function dashboard_settings_box() {

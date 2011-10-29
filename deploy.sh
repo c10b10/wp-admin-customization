@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # args for trunk
-MSG=${1-''}
-BRANCH=${2-'trunk'}
+MSG=${1-'rtxt'}
+BRANCH=${2-'tags/2.0.1'}
 
 # args for tagging a version x.y
 # MSG=${1-'tagging x.y'}
@@ -40,5 +40,5 @@ svn stat | grep '^\!' | awk '{print $2}' | xargs svn rm  > /dev/null 2>&1
 
 svn stat
 
-svn ci -m "$MSG"
+svn ci -m "$MSG" --username ciobi --password open0ress
 

@@ -3,7 +3,7 @@ Contributors: ciobi
 Tags: admin, backend, favicon, settings, customization, logo, update, footer, alerts, dashboard, widgets, hide, size
 Donate link: http://www.ciobi.ca/
 Requires at least: 3.2
-Tested up to: 3.2
+Tested up to: 3.2.1
 Stable tag: 2.0.1
 
 Customize your Wordpress backend.
