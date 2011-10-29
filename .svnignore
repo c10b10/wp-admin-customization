@@ -1,0 +1,5 @@
+.DS_Store
+*.sw*
+*.git*
+tags
+deploy.sh

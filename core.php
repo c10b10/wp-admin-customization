@@ -51,7 +51,6 @@ class AC_Core {
             $logo_mark = jQuery('#header-logo');
             $site_url = jQuery('<a href="<?php echo site_url(); ?>"></a>');
             $site_url.append($logo_mark);
-            console.log($site_url);
             jQuery('#site-heading').before($site_url);
         });
 </script>
@@ -70,14 +69,14 @@ class AC_Core {
             ';
 		// Backend logo name
         $is_logo_text_hidden = false;
-        if ( in_array( 'hide_logo_name', (array)self::$options->style_settings ) ) {
+        if ( in_array( 'hide_logo_name', (array) self::$options->style_settings ) ) {
             $styles[] = '#site-heading { display: none !important }';	
             $is_logo_text_hidden = true;
         }
 
         // Backend logo
         $is_logo_hidden = false;
-		if ( in_array( 'hide_logo', (array)self::$options->style_settings ) ) {
+		if ( in_array( 'hide_logo', (array) self::$options->style_settings ) ) {
 	        $styles[] = '#header-logo { display: none !important }';	
             $is_logo_hidden = true;
         }

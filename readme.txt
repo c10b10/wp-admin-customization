@@ -4,7 +4,7 @@ Tags: admin, backend, favicon, settings, customization, logo, update, footer, al
 Donate link: http://www.ciobi.ca/
 Requires at least: 3.2
 Tested up to: 3.2
-Stable tag: 2.0
+Stable tag: 2.0.1
 
 Customize your Wordpress backend.
 
