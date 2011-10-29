@@ -35,7 +35,7 @@ class AC_Settings extends scbBoxesPage {
                 if ( $echo_error ) {
                 $file_url = site_url( 'wp-content/' . $file );
 ?>
-<div class="error"><p>Cannot find any file at <a href="<?php echo $file_url ?>"><?php echo $file_url ?></a></p></div>
+<div class="error"><p><?php printf( __( 'Cannot find any file at <a href="%1$s">%1$s</a>', $this->textdomain ), $file_url ); ?></p></div>
 <?php
                 }
                 return false;
@@ -96,7 +96,7 @@ class AC_Settings extends scbBoxesPage {
 		$this->options->general_settings = (array) @$_POST['general'];
 
         // Refresh page
-        header( 'Location: ' . admin_url('options-general.php?page=admin-customization') );
+        wp_redirect( admin_url('options-general.php?page=admin-customization') );
 	}
 
 	function style_preferences_box() {

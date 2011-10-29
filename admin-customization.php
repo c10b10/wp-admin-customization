@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Admin Customization
-Version: 2.0
+Version: 2.0.1
 Description: Allows you to customize basic aspects of your Wordpress backend
 Author: Alex Ciobica
 Author URI: http://ciobi.ca/

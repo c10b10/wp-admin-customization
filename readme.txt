@@ -11,6 +11,7 @@ Customize your Wordpress backend.
 == Description ==
 
 Admin Customization allows you to change the appearance of your Wordpress backend. 
+
 The plugin allows you to:
 
 * change the backend favicon.
@@ -23,13 +24,18 @@ The plugin allows you to:
 * hide update notices and plugin update count.
 * turn on redirection to homepage on administration panels logout.
  
+Translations available: 
+
+* Romanian
+* French
+
 The plugin also corrects some Wordpress UX mistakes like not being able to click on the backend or on the login logos, and the fact that the user info dropdown list is mistakenly 2px larger than the dropdown header.
 
 = Author = 
 You should should follow me (@ciobi) on <a href="http://twitter.com/ciobi/">twitter</a>.
 
 = Plugin Last Updated = 
-July 10th, 2011
+October 30th, 2011
 
 == Installation ==
 
@@ -52,6 +58,11 @@ To install the plugin you must:
 * Romanian
 
 == Changelog ==
+
+= 2.0.1 = 
+* fixed js bug
+* added french translation (thank you Frédéric Serva)
+
 
 = 2.0 =
 * added support for Wordpress 3.2
